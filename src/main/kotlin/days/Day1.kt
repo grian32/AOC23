@@ -1,15 +1,14 @@
 package days
 
-class Day1(val input: String) : Day {
+class Day1(private val input: String) : Day {
     override fun part1()  {
-        val processedInput = input.lines().map { it.removeAllLetters() }
+        val processedInput = input.filterNot { it.isLetter() }.lines()
         var sum = 0
 
         for (i in processedInput) {
             val split = i.split("").filter { it.isNotBlank() }
-            val number = "${split.first()}${split.last()}"
 
-            sum += number.toInt()
+            sum += "${split.first()}${split.last()}".toInt()
         }
 
         println(sum)
@@ -47,18 +46,9 @@ class Day1(val input: String) : Day {
                 spelledToDigits[it.value.reversed()]
             }
 
-            println("$first$last")
-
             sum += "$first$last".toInt()
         }
 
         println(sum)
-    }
-
-    companion object {
-        fun String.removeAllLetters(): String {
-            return this.filterNot { it.isLetter() }
-        }
-
     }
 }
