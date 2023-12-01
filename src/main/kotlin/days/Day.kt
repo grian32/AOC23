@@ -1,5 +1,6 @@
 package days
 
+import java.io.File
 import java.net.URI
 import java.nio.file.Paths
 
@@ -20,9 +21,7 @@ interface Day {
 
     companion object {
         fun importInput(day: Int): String {
-            val url = this::class.java.getResource("/inputs/day${day}.txt")
-            val path = Paths.get(url?.toURI() ?: URI(""))
-            return path.toFile().readText()
+            return File(this::class.java.getResource("/input/day${day}.txt")?.file ?: "").readText()
         }
     }
 }
