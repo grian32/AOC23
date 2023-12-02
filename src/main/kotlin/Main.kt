@@ -1,8 +1,8 @@
 import days.Day
-import days.Day1
+import days.Day2
 
 fun main() {
-    val day = Day1(Day.importInput(1))
+    val day = Day2(Day.importInput(2))
 
     day.run()
 }
