@@ -1,5 +1,7 @@
 package days
 
+import isInt
+
 class Day1(private val input: String) : Day {
     override fun part1()  {
         val processedInput = input.filterNot { it.isLetter() }.lines()
@@ -31,7 +33,7 @@ class Day1(private val input: String) : Day {
 
         inputLines.forEach { str ->
             val first = Regex("one|two|three|four|five|six|seven|eight|nine|\\d").find(str).let {
-                if (it!!.value.toIntOrNull() != null) {
+                if (it!!.value.isInt()) {
                     return@let it.value
                 }
 
@@ -39,7 +41,7 @@ class Day1(private val input: String) : Day {
             }
 
             val last = Regex("eno|owt|eerht|ruof|evif|xis|neves|thgie|enin|\\d").find(str.reversed()).let{
-                if (it!!.value.toIntOrNull() != null) {
+                if (it!!.value.isInt()) {
                     return@let it.value
                 }
 
